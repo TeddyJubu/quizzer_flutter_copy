@@ -1,5 +1,11 @@
+//import 'dart:html';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:quizzer_flutter_copy/quizBrain.dart';
+import 'questions.dart';
+
+QuizBrain brain = QuizBrain();
 
 void main() {
   runApp(QuizPage());
@@ -33,12 +39,20 @@ class Quizzer extends StatefulWidget {
 class _QuizzerState extends State<Quizzer> {
   String temp;
   int count = 0;
-  List<String> statement = [
-    'You can lead a cow down stairs but not up stairs.',
-    'Approximately one quarter of human bones are in the feet.',
-    'A slug\'s blood is green.',
-  ];
-  List<bool> answer = [false, true, true];
+//  List<String> statement = [
+//    'You can lead a cow down stairs but not up stairs.',
+//    'Approximately one quarter of human bones are in the feet.',
+//    'A slug\'s blood is green.',
+//  ];
+//  List<bool> answer = [false, true, true];
+
+//  List<Questions> questionBank = [
+//    Questions(q: 'You can lead a cow down stairs but not up stairs.', a: false),
+//    Questions(
+//        q: 'Approximately one quarter of human bones are in the feet.',
+//        a: true),
+//    Questions(q: 'A slug\'s blood is green.', a: true),
+//  ];
   List<Icon> scoreKeeper = [];
   @override
   Widget build(BuildContext context) {
@@ -53,7 +67,7 @@ class _QuizzerState extends State<Quizzer> {
             child: Container(
               child: Center(
                 child: Text(
-                  statement[count],
+                  brain.questionBank[count].questionText,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 20,
@@ -70,7 +84,7 @@ class _QuizzerState extends State<Quizzer> {
             child: FlatButton(
               color: Colors.green.shade500,
               onPressed: () {
-                bool correctAnswer = answer[count];
+                bool correctAnswer = brain.questionBank[count].answerTest;
                 if (correctAnswer == true) {
                   print("right answer");
                 } else {
@@ -102,7 +116,7 @@ class _QuizzerState extends State<Quizzer> {
             child: FlatButton(
               color: Colors.red.shade500,
               onPressed: () {
-                bool correctAnswer = answer[count];
+                bool correctAnswer = brain.questionBank[count].answerTest;
                 if (correctAnswer == false) {
                   print("right answer");
                 } else {
