@@ -3,7 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:quizzer_flutter_copy/quizBrain.dart';
-import 'questions.dart';
+//import 'questions.dart';
 
 QuizBrain brain = QuizBrain();
 
@@ -67,7 +67,7 @@ class _QuizzerState extends State<Quizzer> {
             child: Container(
               child: Center(
                 child: Text(
-                  brain.questionBank[count].questionText,
+                  brain.statement(count),
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 20,
@@ -84,7 +84,7 @@ class _QuizzerState extends State<Quizzer> {
             child: FlatButton(
               color: Colors.green.shade500,
               onPressed: () {
-                bool correctAnswer = brain.questionBank[count].answerTest;
+                bool correctAnswer = brain.answer(count);
                 if (correctAnswer == true) {
                   print("right answer");
                 } else {
@@ -116,7 +116,7 @@ class _QuizzerState extends State<Quizzer> {
             child: FlatButton(
               color: Colors.red.shade500,
               onPressed: () {
-                bool correctAnswer = brain.questionBank[count].answerTest;
+                bool correctAnswer = brain.answer(count);
                 if (correctAnswer == false) {
                   print("right answer");
                 } else {
