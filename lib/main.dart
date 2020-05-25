@@ -1,5 +1,5 @@
 //import 'dart:html';
-
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:quizzer_flutter_copy/quizBrain.dart';
@@ -37,6 +37,30 @@ class Quizzer extends StatefulWidget {
 }
 
 class _QuizzerState extends State<Quizzer> {
+  void checkAnswer(bool clicked) {
+    setState(() {
+      if (clicked == brain.answer()) {
+        print("right answer");
+        scoreKeeper.add(
+          Icon(
+            Icons.check,
+            color: Colors.green,
+          ),
+        );
+      } else {
+        print('wrong answer');
+        scoreKeeper.add(
+          Icon(
+            Icons.close,
+            color: Colors.red,
+          ),
+        );
+      }
+
+      brain.answerIndex();
+    });
+  }
+
   List<Icon> scoreKeeper = [];
   @override
   Widget build(BuildContext context) {
@@ -68,21 +92,7 @@ class _QuizzerState extends State<Quizzer> {
             child: FlatButton(
               color: Colors.green.shade500,
               onPressed: () {
-                bool correctAnswer = brain.answer();
-                if (correctAnswer == true) {
-                  print("right answer");
-                } else {
-                  print('wrong answer');
-                }
-                setState(() {
-                  scoreKeeper.add(
-                    Icon(
-                      Icons.check,
-                      color: Colors.green,
-                    ),
-                  );
-                  brain.answerIndex();
-                });
+                checkAnswer(true);
               },
               child: Text(
                 'True',
@@ -100,21 +110,7 @@ class _QuizzerState extends State<Quizzer> {
             child: FlatButton(
               color: Colors.red.shade500,
               onPressed: () {
-                bool correctAnswer = brain.answer();
-                if (correctAnswer == false) {
-                  print("right answer");
-                } else {
-                  print('wrong answer');
-                }
-                setState(() {
-                  scoreKeeper.add(
-                    Icon(
-                      Icons.close,
-                      color: Colors.red,
-                    ),
-                  );
-                  brain.answerIndex();
-                });
+                checkAnswer(false);
               },
               child: Text(
                 'False',
