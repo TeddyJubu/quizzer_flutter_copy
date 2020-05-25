@@ -37,8 +37,10 @@ class Quizzer extends StatefulWidget {
 }
 
 class _QuizzerState extends State<Quizzer> {
+  List<Icon> scoreKeeper = [];
   void checkAnswer(bool clicked) {
-    if (scoreKeeper.length <= 13) {
+    //print(scoreKeeper.length);
+    if (brain.isFinished()) {
       setState(() {
         if (clicked == brain.answer()) {
           //print("right answer");
@@ -61,15 +63,20 @@ class _QuizzerState extends State<Quizzer> {
         brain.answerIndex();
       });
     } else {
-      Alert(
-              context: context,
-              title: "FINISHED",
-              desc: "You've completed the quiz")
-          .show();
+      setState(() {
+        Alert(
+                context: context,
+                title: "FINISHED",
+                desc: "You've completed the quiz")
+            .show();
+        scoreKeeper = [];
+        brain.reset();
+      });
+
+      //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
     }
   }
 
-  List<Icon> scoreKeeper = [];
   @override
   Widget build(BuildContext context) {
     return Column(
