@@ -1,16 +1,5 @@
 # quizzer_flutter_copy
 
-A new Flutter project.
+## A simple quiz android app. Made for practice purpose. Here you'll be asked questions and answers will be veryfied on the go. 
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![ezgif-5-634d9c60f5ad](https://user-images.githubusercontent.com/22673213/82813939-eff16580-9eb7-11ea-9ca4-5366413cd8dc.gif)
