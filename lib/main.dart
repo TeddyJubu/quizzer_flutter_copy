@@ -38,27 +38,35 @@ class Quizzer extends StatefulWidget {
 
 class _QuizzerState extends State<Quizzer> {
   void checkAnswer(bool clicked) {
-    setState(() {
-      if (clicked == brain.answer()) {
-        print("right answer");
-        scoreKeeper.add(
-          Icon(
-            Icons.check,
-            color: Colors.green,
-          ),
-        );
-      } else {
-        print('wrong answer');
-        scoreKeeper.add(
-          Icon(
-            Icons.close,
-            color: Colors.red,
-          ),
-        );
-      }
+    if (scoreKeeper.length <= 13) {
+      setState(() {
+        if (clicked == brain.answer()) {
+          //print("right answer");
+          scoreKeeper.add(
+            Icon(
+              Icons.check,
+              color: Colors.green,
+            ),
+          );
+        } else {
+          //print('wrong answer');
+          scoreKeeper.add(
+            Icon(
+              Icons.close,
+              color: Colors.red,
+            ),
+          );
+        }
 
-      brain.answerIndex();
-    });
+        brain.answerIndex();
+      });
+    } else {
+      Alert(
+              context: context,
+              title: "FINISHED",
+              desc: "You've completed the quiz")
+          .show();
+    }
   }
 
   List<Icon> scoreKeeper = [];
