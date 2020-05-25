@@ -1,9 +1,7 @@
-//import 'dart:html';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:quizzer_flutter_copy/quizBrain.dart';
-//import 'questions.dart';
 
 QuizBrain brain = QuizBrain();
 
@@ -39,11 +37,9 @@ class Quizzer extends StatefulWidget {
 class _QuizzerState extends State<Quizzer> {
   List<Icon> scoreKeeper = [];
   void checkAnswer(bool clicked) {
-    //print(scoreKeeper.length);
     if (brain.isFinished()) {
       setState(() {
         if (clicked == brain.answer()) {
-          //print("right answer");
           scoreKeeper.add(
             Icon(
               Icons.check,
@@ -72,8 +68,6 @@ class _QuizzerState extends State<Quizzer> {
         scoreKeeper = [];
         brain.reset();
       });
-
-      //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
     }
   }
 
